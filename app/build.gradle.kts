@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "es.kab.footballproject"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "es.kab.footballproject"
