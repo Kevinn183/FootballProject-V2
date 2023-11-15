@@ -9,7 +9,7 @@ import es.kab.footballproject.Fragments.LoginFragment
 import es.kab.footballproject.Fragments.RegisterFragment
 import es.kab.footballproject.R
 
-class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentListener {
+class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentListener, LoginFragment.LoginFragmentListener, RegisterFragment.RegisterFragmentListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_control)
@@ -22,7 +22,31 @@ class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentList
         }
     }
 
+    override fun onLgnButtonCLicked() {
+
+    }
+
+    override fun onTextRegisterCLicked() {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<RegisterFragment>(R.id.controlFragmentContainer)
+        }
+    }
+
+    override fun onRegButtonCLicked(name: String, password: String) {
+        val frag = LoginFragment()
+        val bundle = Bundle().apply {
+            putString("name", name)
+            putString("password", password)
+        }
+        frag.arguments = bundle
+
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace(R.id.controlFragmentContainer, frag)
+        }
+    }
+
     override fun <T> replace() {
-        TODO("Not yet implemented")
     }
 }

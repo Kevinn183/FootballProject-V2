@@ -1,35 +1,78 @@
 package es.kab.footballproject.Fragments
 
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputLayout
 import es.kab.footballproject.R
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class RegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+class RegisterFragment : Fragment(), View.OnClickListener {
+    private var nom: TextInputLayout? = null
+    private var passw: TextInputLayout? = null
+    private var reppassw: TextInputLayout? = null
+
+    private var mListener : RegisterFragmentListener? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is RegisterFragmentListener){
+            mListener = context
+        }
+        else{
+            throw Exception("The activity must implement the interface RegisterFragmentListener")
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        val view = inflater.inflate(R.layout.fragment_register, container, false)
+        val btnReg : Button = view.findViewById(R.id.register_btn)
+        nom = view.findViewById(R.id.reg_name)
+        passw = view.findViewById(R.id.reg_pass)
+        reppassw = view.findViewById(R.id.reg_pass_confirm)
+        btnReg.setOnClickListener(this)
+        return view
     }
+
+    override fun onClick(v: View?) {
+        if (v != null){
+            when(v.id){
+                R.id.register_btn ->{
+                    if (nom?.editText?.text.toString().trim().isEmpty()|| passw?.editText?.text.toString().trim().isEmpty() || reppassw?.editText?.text.toString().trim().isEmpty()){
+                        Toast.makeText(context, "There can't be empty fields", Toast.LENGTH_SHORT).show()
+                    }
+                    else if (passw?.editText?.text.toString() != reppassw?.editText?.text.toString()){
+                        Toast.makeText(context, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        mListener?.onRegButtonCLicked(nom?.editText?.text.toString(), passw?.editText?.text.toString())
+                    }
+                }
+            }
+        }
+    }
+
+    interface RegisterFragmentListener{
+        fun onRegButtonCLicked(name : String, password : String)
+        fun<T> replace()
+    }
+
+
 
 
 }
