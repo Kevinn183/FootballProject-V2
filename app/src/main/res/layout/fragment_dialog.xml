@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".Dialogs.ControlDialog"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/name_di"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginRight="4dp"
+        android:background="@color/green_700"
+        android:text="This will be your user, ok?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/un"
+        android:layout_height="match_parent"
+        android:text="@string/username" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/up"
+        android:layout_height="match_parent"
+        android:text="@string/password" />
+
+</LinearLayout>

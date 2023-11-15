@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
+import es.kab.footballproject.Dialogs.ControlDialog
 import es.kab.footballproject.R
 
 
@@ -60,6 +61,9 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                         Toast.makeText(context, "Passwords do not match", Toast.LENGTH_SHORT).show()
                     }
                     else{
+                        val dialogFragment = ControlDialog.newInstance(nom?.editText?.text.toString(),passw?.editText?.text.toString())
+                        dialogFragment.show(requireActivity().supportFragmentManager, "LOGIN")
+                        //dialogFragment.show(childFragmentManager, "LOGIN")
                         mListener?.onRegButtonCLicked(nom?.editText?.text.toString(), passw?.editText?.text.toString())
                     }
                 }
