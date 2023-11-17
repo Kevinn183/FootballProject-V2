@@ -1,5 +1,6 @@
 package es.kab.footballproject.Activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commit
@@ -23,7 +24,8 @@ class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentList
     }
 
     override fun onLgnButtonCLicked() {
-
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onTextRegisterCLicked() {

@@ -63,7 +63,6 @@ class RegisterFragment : Fragment(), View.OnClickListener {
                     else{
                         val dialogFragment = ControlDialog.newInstance(nom?.editText?.text.toString(),passw?.editText?.text.toString())
                         dialogFragment.show(requireActivity().supportFragmentManager, "LOGIN")
-                        //dialogFragment.show(childFragmentManager, "LOGIN")
                         mListener?.onRegButtonCLicked(nom?.editText?.text.toString(), passw?.editText?.text.toString())
                     }
                 }

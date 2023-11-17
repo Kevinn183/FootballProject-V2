@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_liga"
+        android:enabled="true"
+        android:icon="@drawable/laliga"
+        android:title="@string/liga"
+        />
+    <item
+        android:id="@+id/item_mundial"
+        android:enabled="true"
+        android:icon="@drawable/laliga"
+        android:title="@string/mundial"
+        />
+    <item
+        android:id="@+id/item_bdo"
+        android:enabled="true"
+        android:icon="@drawable/laliga"
+        android:title="@string/bdo"
+        />
+    <item
+        android:id="@+id/item_aline"
+        android:enabled="true"
+        android:icon="@drawable/realsociedad"
+        android:title="@string/make11"
+        />
+
+</menu>

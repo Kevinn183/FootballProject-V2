@@ -7,6 +7,10 @@
     <string name="username">User name</string>
     <string name="login">LOGIN</string>
     <string name="start">START</string>
+    <string name="liga">LA LIGA</string>
+    <string name="bdo">BALON DE ORO</string>
+    <string name="mundial">MUNDIAL</string>
+    <string name="make11">TU 11</string>
     <string name="no_account">You don\'t have an account? Register now </string>
     <string name="create_account">CREATE ACCOUNT </string>
 </resources>

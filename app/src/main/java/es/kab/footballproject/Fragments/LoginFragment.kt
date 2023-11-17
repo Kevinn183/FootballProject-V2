@@ -62,7 +62,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         Toast.makeText(context, "there can't be empty fields", Toast.LENGTH_SHORT).show()
                     }
                     else if (user?.editText?.text.toString() == name && pass?.editText?.text.toString() == password){
-                        Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show()
+                        mListener?.onLgnButtonCLicked()
                     }
                     else{
                         Snackbar.make(v, "User not found",Snackbar.LENGTH_SHORT).setAction("REGISTER NOW"){

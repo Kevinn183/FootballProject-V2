@@ -38,21 +38,6 @@ class ControlDialog : DialogFragment() {
                 .setPositiveButton("ok"){dialog, id -> }
             builder.create()
         }?: throw IllegalStateException("Activity cannot be null")
-//        val builder = AlertDialog.Builder(requireActivity())
-//        val inflater = requireActivity().layoutInflater
-//        val  view = inflater.inflate(R.layout.fragment_dialog, null)
-//        val nom : TextView = view.findViewById(R.id.un)
-//        val pas : TextView = view.findViewById(R.id.up)
-//
-//        val param1 = arguments?.getString(ARG_PARAM1)
-//        val param2 = arguments?.getString(ARG_PARAM2)
-//
-//        nom.text = "Username: $param1"
-//        pas.text = "Password: $param2"
-//
-//        builder
-//            .setView(view)
-//            .setPositiveButton("ok"){dialog, id -> }
-//        return builder.create()
+
     }
 }
