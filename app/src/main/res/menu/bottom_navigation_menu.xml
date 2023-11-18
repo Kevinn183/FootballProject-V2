@@ -3,25 +3,25 @@
     <item
         android:id="@+id/item_liga"
         android:enabled="true"
-        android:icon="@drawable/laliga"
+        android:icon="@drawable/anda"
         android:title="@string/liga"
         />
     <item
         android:id="@+id/item_mundial"
         android:enabled="true"
-        android:icon="@drawable/laliga"
+        android:icon="@drawable/world"
         android:title="@string/mundial"
         />
     <item
         android:id="@+id/item_bdo"
         android:enabled="true"
-        android:icon="@drawable/laliga"
+        android:icon="@drawable/bdoro"
         android:title="@string/bdo"
         />
     <item
         android:id="@+id/item_aline"
         android:enabled="true"
-        android:icon="@drawable/realsociedad"
+        android:icon="@drawable/campito"
         android:title="@string/make11"
         />
 
