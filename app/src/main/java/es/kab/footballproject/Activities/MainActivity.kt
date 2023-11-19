@@ -2,15 +2,12 @@ package es.kab.footballproject.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.google.android.material.navigation.NavigationBarView
-import es.kab.footballproject.Fragments.LoginFragment
 import es.kab.footballproject.Fragments.MakeFragment
-import es.kab.footballproject.Fragments.MundialFragment
+import es.kab.footballproject.Fragments.WorldFragment
 import es.kab.footballproject.Fragments.OroFragment
 import es.kab.footballproject.Fragments.TeamFragment
 import es.kab.footballproject.R
@@ -40,7 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             R.id.item_mundial ->{
                 supportFragmentManager.commit {
                     setReorderingAllowed(true)
-                    replace<MundialFragment>(R.id.MainFragmentContainer)
+                    replace<WorldFragment>(R.id.MainFragmentContainer)
                 }
                 true
             }
