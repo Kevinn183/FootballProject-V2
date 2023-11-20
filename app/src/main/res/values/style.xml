@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="hightlightText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#1190FF</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

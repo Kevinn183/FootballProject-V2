@@ -15,4 +15,12 @@
     <string name="settings">Settings</string>
     <string name="no_account">You don\'t have an account? Register now </string>
     <string name="create_account">CREATE ACCOUNT </string>
+
+    <string name="messages">Messages</string>
+    <string name="sync_header">Sync</string>
+    <string name="signature">Your signature</string>
+    <string name="default_reply">Default reply action</string>
+    <string name="sync">Sync</string>
+    <string name="reply_option">Reply</string>
+    <string name="sync_email_option">Sync email periodically</string>
 </resources>
