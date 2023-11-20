@@ -2,13 +2,16 @@ package es.kab.footballproject.Activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.google.android.material.navigation.NavigationBarView
 import es.kab.footballproject.Fragments.MakeFragment
 import es.kab.footballproject.Fragments.WorldFragment
 import es.kab.footballproject.Fragments.OroFragment
+import es.kab.footballproject.Fragments.SettingsFragment
 import es.kab.footballproject.Fragments.TeamFragment
 import es.kab.footballproject.R
 import es.kab.footballproject.databinding.ActivityMainBinding
@@ -21,8 +24,28 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNav.setOnItemSelectedListener(this)
+        setSupportActionBar(binding.myToolbar)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.actionSettings ->{
+                Toast.makeText(this, "Information saved correctly", Toast.LENGTH_SHORT).show()
+                supportFragmentManager.commit {
+                    setReorderingAllowed(true)
+                    replace<SettingsFragment>(R.id.MainFragmentContainer)
+                }
+                true
+            }
+            else -> {
+                false
+            }
+        }
+    }
 
 
     override fun onNavigationItemSelected(item:MenuItem) :Boolean{
