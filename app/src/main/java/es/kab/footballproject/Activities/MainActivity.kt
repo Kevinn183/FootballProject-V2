@@ -1,17 +1,16 @@
 package es.kab.footballproject.Activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.google.android.material.navigation.NavigationBarView
 import es.kab.footballproject.Fragments.MakeFragment
 import es.kab.footballproject.Fragments.WorldFragment
 import es.kab.footballproject.Fragments.OroFragment
-import es.kab.footballproject.Fragments.SettingsFragment
 import es.kab.footballproject.Fragments.TeamFragment
 import es.kab.footballproject.R
 import es.kab.footballproject.databinding.ActivityMainBinding
@@ -33,12 +32,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
-            R.id.actionSettings ->{
-                Toast.makeText(this, "Information saved correctly", Toast.LENGTH_SHORT).show()
-                supportFragmentManager.commit {
-                    setReorderingAllowed(true)
-                    replace<SettingsFragment>(R.id.MainFragmentContainer)
-                }
+            R.id.actionLogOut ->{
+                val intent = Intent(this, ControlActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> {
@@ -46,6 +42,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             }
         }
     }
+
+
 
 
     override fun onNavigationItemSelected(item:MenuItem) :Boolean{
@@ -81,6 +79,10 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             else -> false
         }
 
+    }
+
+     fun ToolBarName(name:String){
+        binding.myToolbar.title = name
     }
 
 

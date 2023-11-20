@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FootballProject</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="login">INICIAR SESIÓN</string>
+    <string name="start">INICIO</string>
+    <string name="bdo">BALÓN DE ORO</string>
+    <string name="mundial">MUNDIAL</string>
+    <string name="make11">TU 11</string>
+    <string name="last_win">Ultima</string>
+    <string name="captu">Captura de pantalla</string>
+    <string name="logout">SALIR</string>
+    <string name="no_account">No tienes una cuenta? Registrate</string>
+    <string name="create_account">CREAR CUENTA</string>
+    <string name="messages">Mensajes</string>
+</resources>

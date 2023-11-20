@@ -1,36 +1,27 @@
 package es.kab.footballproject.Fragments
 
-import android.app.AlertDialog
-import android.content.DialogInterface
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
+import android.Manifest
+import android.content.pm.PackageManager
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import es.kab.footballproject.R
 import es.kab.footballproject.databinding.FragmentMakeBinding
-import es.kab.footballproject.databinding.FragmentOroBinding
+
 
 class MakeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentMakeBinding
 
-//    private var player1: TextView? = null
-//    private var player2: TextView? = null
-//    private var player3: TextView? = null
-//    private var player4: TextView? = null
-//    private var player5: TextView? = null
-//    private var player6: TextView? = null
-//    private var player7: TextView? = null
-//    private var player8: TextView? = null
-//    private var player9: TextView? = null
-//    private var player10: TextView? = null
-//    private var player11: EditText? = null
-
-
+    companion object{
+        private val IMAGES_REQUEST_CODE = 200
+    }
 
 
     override fun onCreateView(
@@ -48,13 +39,31 @@ class MakeFragment : Fragment(), View.OnClickListener {
         if (v!=null){
             when(v.id){
                 R.id.floatingCaptura ->{
+                    if (ContextCompat.checkSelfPermission(this.requireContext(),Manifest.permission.READ_MEDIA_IMAGES)!= PackageManager.PERMISSION_GRANTED){
+                        ActivityCompat.requestPermissions(this.requireActivity(), arrayOf(Manifest.permission.READ_MEDIA_IMAGES), IMAGES_REQUEST_CODE)
+                    }
+                    else{
                     Toast.makeText(context, "Screenshot", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
 
         }
 
+    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if(requestCode == IMAGES_REQUEST_CODE) {
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(context, "Screenshot", Toast.LENGTH_SHORT).show()
 
+            }else {
+                Toast.makeText(context, "Permission needed", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 

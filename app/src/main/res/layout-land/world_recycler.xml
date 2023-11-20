@@ -1,0 +1,80 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="2dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/shield_wolrd"
+            android:layout_width="115dp"
+            android:layout_height="131dp"
+            android:layout_marginEnd="220dp"
+            app:srcCompat="@drawable/brasil" />
+        <ImageView
+            android:id="@+id/shield_wolrd2"
+            android:layout_width="115dp"
+            android:layout_height="131dp"
+            android:layout_marginStart="580dp"
+            app:srcCompat="@drawable/tierra"
+            tools:ignore="DuplicateIds" />
+
+
+        <ImageView
+            android:id="@+id/win_world"
+            android:layout_width="225dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="5dp"
+            app:srcCompat="@drawable/win_brasil" />
+
+        <ImageView
+            android:id="@+id/world_tro"
+            android:layout_width="92dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="380dp"
+            android:layout_marginTop="0dp"
+            app:srcCompat="@drawable/mundial" />
+
+        <TextView
+            android:id="@+id/num_tro_world"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="445dp"
+            android:layout_marginTop="74dp"
+            android:text="7"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/last_win_world"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="495dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/last_win"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/year_world"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="495dp"
+            android:layout_marginTop="25dp"
+            android:text="2002"
+            android:textSize="12sp" />
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

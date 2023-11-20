@@ -14,22 +14,17 @@
 
     <Button
         android:id="@+id/start_button"
-        android:layout_width="285dp"
-        android:layout_height="85dp"
-        android:layout_gravity="center"
+        android:layout_width="558dp"
+        android:layout_height="133dp"
+        android:textSize="50sp"
+        android:layout_gravity="center |bottom"
         android:text="@string/start" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="match_parent"
-        android:layout_height="294dp"
+        android:layout_height="209dp"
         android:layout_gravity="end"
         android:src="@drawable/futbolistes" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="match_parent"
-        android:layout_height="274dp"
-        android:layout_gravity="bottom"
-        android:src="@drawable/balon" />
 </FrameLayout>

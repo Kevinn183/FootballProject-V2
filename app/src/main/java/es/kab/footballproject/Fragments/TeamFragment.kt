@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import es.kab.footballproject.Activities.MainActivity
 import es.kab.footballproject.Adapters.TeamAdapter
 import es.kab.footballproject.Classes.Team
 import es.kab.footballproject.R
@@ -21,6 +22,7 @@ class TeamFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTeamBinding.inflate(inflater)
+        (requireActivity() as MainActivity).ToolBarName("LA LIGA")
         setUpRecyclerView()
         return binding.root
     }
