@@ -55,10 +55,10 @@ class RegisterFragment : Fragment(), View.OnClickListener {
             when(v.id){
                 R.id.register_btn ->{
                     if (nom?.editText?.text.toString().trim().isEmpty()|| passw?.editText?.text.toString().trim().isEmpty() || reppassw?.editText?.text.toString().trim().isEmpty()){
-                        Toast.makeText(context, "There can't be empty fields", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.empty), Toast.LENGTH_SHORT).show()
                     }
                     else if (passw?.editText?.text.toString() != reppassw?.editText?.text.toString()){
-                        Toast.makeText(context, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.nopass), Toast.LENGTH_SHORT).show()
                     }
                     else{
                         val dialogFragment = ControlDialog.newInstance(nom?.editText?.text.toString(),passw?.editText?.text.toString())

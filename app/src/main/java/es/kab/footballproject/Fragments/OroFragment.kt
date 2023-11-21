@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import es.kab.footballproject.Activities.MainActivity
 import es.kab.footballproject.Adapters.AwardAdapter
 import es.kab.footballproject.Adapters.WorldAdapter
 import es.kab.footballproject.Classes.Awards
@@ -24,6 +25,7 @@ class OroFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentOroBinding.inflate(inflater)
+        (requireActivity() as MainActivity).ToolBarName(getString(R.string.bdo))
         setUpRecyclerView()
         return binding.root
     }

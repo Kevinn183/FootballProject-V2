@@ -59,13 +59,13 @@ class LoginFragment : Fragment(), View.OnClickListener {
             when(v.id){
                 R.id.login_btn ->{
                     if ( user?.editText?.text.toString().trim().isEmpty()|| pass?.editText?.text.toString().trim().isEmpty()){
-                        Toast.makeText(context, "there can't be empty fields", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.empty), Toast.LENGTH_SHORT).show()
                     }
                     else if (user?.editText?.text.toString() == name && pass?.editText?.text.toString() == password){
                         mListener?.onLgnButtonCLicked()
                     }
                     else{
-                        Snackbar.make(v, "User not found",Snackbar.LENGTH_SHORT).setAction("REGISTER NOW"){
+                        Snackbar.make(v, getString(R.string.nouser),Snackbar.LENGTH_SHORT).setAction(getString(R.string.create_account)){
                             mListener?.onTextRegisterCLicked()
                         }.show()
                     }

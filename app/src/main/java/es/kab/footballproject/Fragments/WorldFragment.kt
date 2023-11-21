@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import es.kab.footballproject.Activities.MainActivity
 import es.kab.footballproject.Adapters.WorldAdapter
 import es.kab.footballproject.Classes.Nation
 import es.kab.footballproject.R
@@ -20,6 +21,7 @@ class WorldFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMundialBinding.inflate(inflater)
+        (requireActivity() as MainActivity).ToolBarName(getString(R.string.mundial))
         setUpRecyclerView()
         return binding.root
     }

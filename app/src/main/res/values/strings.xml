@@ -14,5 +14,10 @@
     <string name="no_account">You don\'t have an account? Register now </string>
     <string name="create_account">CREATE ACCOUNT </string>
     <string name="bdo">BALLON D\'OR</string>
+    <string name="perm">Permission needed</string>
+    <string name="empty">There can\'t be empty fields</string>
+    <string name="nopass">Passwords don\'t match</string>
+    <string name="nouser">User not found</string>
+    <string name="exit">Coming out</string>
     <string name="last_win">Last win</string>
 </resources>

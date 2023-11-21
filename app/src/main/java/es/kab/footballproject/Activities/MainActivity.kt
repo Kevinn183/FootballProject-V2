@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.google.android.material.navigation.NavigationBarView
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.actionLogOut ->{
+                Toast.makeText(this,getString(R.string.exit),Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ControlActivity::class.java)
                 startActivity(intent)
                 true
@@ -42,9 +44,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             }
         }
     }
-
-
-
 
     override fun onNavigationItemSelected(item:MenuItem) :Boolean{
         return when(item.itemId){

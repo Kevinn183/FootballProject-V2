@@ -11,6 +11,7 @@ import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import es.kab.footballproject.Activities.MainActivity
 import es.kab.footballproject.R
 import es.kab.footballproject.databinding.FragmentMakeBinding
 
@@ -29,6 +30,7 @@ class MakeFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMakeBinding.inflate(inflater)
+        (requireActivity() as MainActivity).ToolBarName(getString(R.string.make11))
         binding.floatingCaptura.setOnClickListener(this)
 
         return binding.root
@@ -43,7 +45,7 @@ class MakeFragment : Fragment(), View.OnClickListener {
                         ActivityCompat.requestPermissions(this.requireActivity(), arrayOf(Manifest.permission.READ_MEDIA_IMAGES), IMAGES_REQUEST_CODE)
                     }
                     else{
-                    Toast.makeText(context, "Screenshot", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.captu), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -58,10 +60,10 @@ class MakeFragment : Fragment(), View.OnClickListener {
     ) {
         if(requestCode == IMAGES_REQUEST_CODE) {
             if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(context, "Screenshot", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.captu), Toast.LENGTH_SHORT).show()
 
             }else {
-                Toast.makeText(context, "Permission needed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.perm), Toast.LENGTH_SHORT).show()
             }
         }
     }
