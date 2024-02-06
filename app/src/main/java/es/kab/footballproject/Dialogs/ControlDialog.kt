@@ -35,7 +35,6 @@ class ControlDialog : DialogFragment() {
             val builder = AlertDialog.Builder(it)
             builder
                 .setView(view)
-                //.setPositiveButton("ok"){dialog, id -> }
             builder.create()
         }?: throw IllegalStateException("Activity cannot be null")
 

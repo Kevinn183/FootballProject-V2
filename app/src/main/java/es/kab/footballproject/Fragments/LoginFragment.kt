@@ -18,14 +18,10 @@ import es.kab.footballproject.R
 
 class LoginFragment : Fragment(), View.OnClickListener {
     private var mListener : LoginFragmentListener? = null
-
-
-
     private var user: TextInputLayout? = null
     private var pass: TextInputLayout? = null
     private var name: String? = null
     private var password: String? = null
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is LoginFragmentListener){
@@ -35,9 +31,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
             throw Exception("The activity must implement the interface LoginFragmentListener")
         }
     }
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +46,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
         regtext.setOnClickListener(this)
         return view
     }
-
     override fun onClick(v: View?) {
         if (v != null){
             when(v.id){
@@ -64,8 +56,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     else if (user?.editText?.text.toString() == name && pass?.editText?.text.toString() == password){
                         mListener?.onLgnButtonCLicked()
                     }
-                    else{
-                        Snackbar.make(v, getString(R.string.nouser),Snackbar.LENGTH_SHORT).setAction(getString(R.string.create_account)){
+                    else{ Snackbar.make(v, getString(R.string.nouser),Snackbar.LENGTH_SHORT).setAction(getString(R.string.create_account)){
                             mListener?.onTextRegisterCLicked()
                         }.show()
                     }

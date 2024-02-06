@@ -19,9 +19,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
     private var nom: TextInputLayout? = null
     private var passw: TextInputLayout? = null
     private var reppassw: TextInputLayout? = null
-
     private var mListener : RegisterFragmentListener? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
