@@ -10,16 +10,21 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputLayout
 import es.kab.footballproject.Dialogs.ControlDialog
+import es.kab.footballproject.Firebase.AuthManager
 import es.kab.footballproject.R
+import es.kab.footballproject.databinding.FragmentRegisterBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
-class RegisterFragment : Fragment(), View.OnClickListener {
-    private var nom: TextInputLayout? = null
-    private var passw: TextInputLayout? = null
-    private var reppassw: TextInputLayout? = null
+class RegisterFragment : Fragment() {
+    private lateinit var binding: FragmentRegisterBinding
     private var mListener : RegisterFragmentListener? = null
+    private lateinit var authManager:AuthManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +32,7 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        authManager = AuthManager()
         if (context is RegisterFragmentListener){
             mListener = context
         }
@@ -39,37 +45,43 @@ class RegisterFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_register, container, false)
-        val btnReg : Button = view.findViewById(R.id.register_btn)
-        nom = view.findViewById(R.id.reg_name)
-        passw = view.findViewById(R.id.reg_pass)
-        reppassw = view.findViewById(R.id.reg_pass_confirm)
-        btnReg.setOnClickListener(this)
-        return view
-    }
 
-    override fun onClick(v: View?) {
-        if (v != null){
-            when(v.id){
-                R.id.register_btn ->{
-                    if (nom?.editText?.text.toString().trim().isEmpty()|| passw?.editText?.text.toString().trim().isEmpty() || reppassw?.editText?.text.toString().trim().isEmpty()){
-                        Toast.makeText(context, getString(R.string.empty), Toast.LENGTH_SHORT).show()
-                    }
-                    else if (passw?.editText?.text.toString() != reppassw?.editText?.text.toString()){
-                        Toast.makeText(context, getString(R.string.nopass), Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-                        val dialogFragment = ControlDialog.newInstance(nom?.editText?.text.toString(),passw?.editText?.text.toString())
-                        dialogFragment.show(requireActivity().supportFragmentManager, "LOGIN")
-                        mListener?.onRegButtonCLicked(nom?.editText?.text.toString(), passw?.editText?.text.toString())
+        binding = FragmentRegisterBinding.inflate(inflater,container,false)
+        binding.registerBtn.setOnClickListener {
+            val email = binding.regName.editText?.text.toString()
+            val pass = binding.regPass.editText?.text.toString()
+            val repass = binding.regPassConfirm.editText?.text.toString()
+            if (!email.isNullOrBlank() && ! pass.isNullOrBlank()){
+                if (pass != repass){
+                    Toast.makeText(context, getString(R.string.nopass), Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    lifecycleScope.launch(Dispatchers.IO){
+                        val userLogged = authManager.singin(email,pass)
+                        withContext(Dispatchers.Main){
+                            if (userLogged != null){
+                                Toast.makeText(requireContext(), userLogged.email, Toast.LENGTH_SHORT).show()
+                                val dialogFragment = ControlDialog.newInstance(email,pass)
+                                dialogFragment.show(requireActivity().supportFragmentManager, "LOGIN")
+                                mListener?.onRegButtonCLicked()
+                            }else{
+                                Toast.makeText(requireContext(),"Bad credentials", Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
                 }
+
             }
         }
+
+
+        return binding.root
     }
 
+
+
     interface RegisterFragmentListener{
-        fun onRegButtonCLicked(name : String, password : String)
+        fun onRegButtonCLicked()
         fun<T> replace()
     }
 

@@ -35,17 +35,10 @@ class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentList
         }
     }
 
-    override fun onRegButtonCLicked(name: String, password: String) {
-        val frag = LoginFragment()
-        val bundle = Bundle().apply {
-            putString("name", name)
-            putString("password", password)
-        }
-        frag.arguments = bundle
-
+    override fun onRegButtonCLicked() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            replace(R.id.controlFragmentContainer, frag)
+            replace<LoginFragment>(R.id.controlFragmentContainer)
         }
     }
 
