@@ -6,24 +6,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
+import es.kab.footballproject.Firebase.AuthManager
 import es.kab.footballproject.R
+import es.kab.footballproject.databinding.FragmentLoginBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-
-class LoginFragment : Fragment(), View.OnClickListener {
+class LoginFragment : Fragment() {
     private var mListener : LoginFragmentListener? = null
-    private var user: TextInputLayout? = null
-    private var pass: TextInputLayout? = null
-    private var name: String? = null
-    private var password: String? = null
+    private lateinit var binding: FragmentLoginBinding
+    private lateinit var authManager: AuthManager
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        authManager = AuthManager()
         if (context is LoginFragmentListener){
             mListener = context
         }
@@ -35,37 +36,40 @@ class LoginFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
-        val btnLog : Button = view.findViewById(R.id.login_btn)
-        val regtext : TextView = view.findViewById(R.id.no_account)
-        user = view.findViewById(R.id.username_log)
-        pass = view.findViewById(R.id.password_log)
-        name = arguments?.getString("name")
-        password = arguments?.getString("password")
-        btnLog.setOnClickListener(this)
-        regtext.setOnClickListener(this)
-        return view
-    }
-    override fun onClick(v: View?) {
-        if (v != null){
-            when(v.id){
-                R.id.login_btn ->{
-                    if ( user?.editText?.text.toString().trim().isEmpty()|| pass?.editText?.text.toString().trim().isEmpty()){
-                        Toast.makeText(context, getString(R.string.empty), Toast.LENGTH_SHORT).show()
-                    }
-                    else if (user?.editText?.text.toString() == name && pass?.editText?.text.toString() == password){
-                        mListener?.onLgnButtonCLicked()
-                    }
-                    else{ Snackbar.make(v, getString(R.string.nouser),Snackbar.LENGTH_SHORT).setAction(getString(R.string.create_account)){
-                            mListener?.onTextRegisterCLicked()
-                        }.show()
+        binding = FragmentLoginBinding.inflate(inflater,container,false)
+        binding.loginBtn.setOnClickListener{
+            val email = binding.usernameLog.editText?.text.toString()
+            val pass = binding.passwordLog.editText?.text.toString()
+            if (!email.isNullOrBlank() && ! pass.isNullOrBlank()){
+                lifecycleScope.launch(Dispatchers.IO){
+                    val userLogged = authManager.login(email,pass)
+                    withContext(Dispatchers.Main){
+                        if (userLogged != null){
+                            Toast.makeText(requireContext(), userLogged.email, Toast.LENGTH_SHORT).show()
+                            mListener?.onLgnButtonCLicked()
+                        }else{
+                            view?.let { it1 ->
+                                Snackbar.make(
+                                    it1,
+                                    getString(R.string.nouser),
+                                    Snackbar.LENGTH_SHORT
+                                )
+                                    .setAction(getString(R.string.create_account)) {
+                                        mListener?.onTextRegisterCLicked()
+                                    }.show()
+                            }
+                        }
                     }
                 }
-                R.id.no_account ->{
-                    mListener?.onTextRegisterCLicked()
-                }
+            }else{
+                Toast.makeText(context, getString(R.string.empty), Toast.LENGTH_SHORT).show()
             }
         }
+        binding.noAccount.setOnClickListener {
+            mListener?.onTextRegisterCLicked()
+        }
+
+        return binding.root
     }
 
     override fun onDetach() {

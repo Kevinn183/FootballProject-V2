@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "954490132425",
+    "project_id": "football-project-v2",
+    "storage_bucket": "football-project-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954490132425:android:701923ced0ef8ea01c7a18",
+        "android_client_info": {
+          "package_name": "es.kab.footballproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-cxUrYH_m2W9P8MXz8rfo60yp_sI5HM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
