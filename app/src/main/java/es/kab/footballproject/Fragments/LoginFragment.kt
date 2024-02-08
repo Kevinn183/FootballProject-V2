@@ -55,7 +55,7 @@ class LoginFragment : Fragment() {
                                     Snackbar.LENGTH_SHORT
                                 )
                                     .setAction(getString(R.string.create_account)) {
-                                        mListener?.onTextRegisterCLicked()
+                                        mListener?.onRegisterButtonCLicked()
                                     }.show()
                             }
                         }
@@ -66,7 +66,10 @@ class LoginFragment : Fragment() {
             }
         }
         binding.noAccount.setOnClickListener {
-            mListener?.onTextRegisterCLicked()
+            mListener?.onRegisterButtonCLicked()
+        }
+        binding.noPassword?.setOnClickListener {
+            mListener?.onTextRecoverCLicked()
         }
 
         return binding.root
@@ -79,7 +82,8 @@ class LoginFragment : Fragment() {
 
     interface LoginFragmentListener{
         fun onLgnButtonCLicked()
-        fun onTextRegisterCLicked()
+        fun onTextRecoverCLicked()
+        fun onRegisterButtonCLicked()
         fun<T> replace()
     }
 

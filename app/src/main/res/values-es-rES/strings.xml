@@ -15,6 +15,7 @@
     <string name="no_account">No tienes una cuenta? Registrate</string>
     <string name="create_account">CREAR CUENTA</string>
     <string name="exit">Saliendo</string>
+    <string name="forget_pass">Recuperar contraseña</string>
     <string name="messages">Mensajes</string>
     <string name="perm">Permiso necesario</string>
     <string name="empty">No pueden haber campos vacios</string>

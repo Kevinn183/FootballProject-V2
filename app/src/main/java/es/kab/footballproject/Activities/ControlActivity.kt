@@ -28,7 +28,14 @@ class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentList
         startActivity(intent)
     }
 
-    override fun onTextRegisterCLicked() {
+    override fun onTextRecoverCLicked() {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<LoginFragment>(R.id.controlFragmentContainer)
+        }
+    }
+
+    override fun onRegisterButtonCLicked() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             replace<RegisterFragment>(R.id.controlFragmentContainer)

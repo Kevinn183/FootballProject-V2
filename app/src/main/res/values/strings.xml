@@ -17,7 +17,9 @@
     <string name="perm">Permission needed</string>
     <string name="empty">There can\'t be empty fields</string>
     <string name="nopass">Passwords don\'t match</string>
+    <string name="forget_pass">Recover password</string>
     <string name="nouser">User not found</string>
     <string name="exit">Coming out</string>
     <string name="last_win">Last win</string>
+    <string name="messages">Messages</string>
 </resources>
