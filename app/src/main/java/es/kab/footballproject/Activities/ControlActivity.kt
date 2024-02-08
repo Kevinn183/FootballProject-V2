@@ -7,10 +7,11 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import es.kab.footballproject.Fragments.InicialFragment
 import es.kab.footballproject.Fragments.LoginFragment
+import es.kab.footballproject.Fragments.PasswordFragment
 import es.kab.footballproject.Fragments.RegisterFragment
 import es.kab.footballproject.R
 
-class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentListener, LoginFragment.LoginFragmentListener, RegisterFragment.RegisterFragmentListener {
+class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentListener, LoginFragment.LoginFragmentListener, RegisterFragment.RegisterFragmentListener, PasswordFragment.PasswordListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_control)
@@ -31,7 +32,7 @@ class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentList
     override fun onTextRecoverCLicked() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<LoginFragment>(R.id.controlFragmentContainer)
+            replace<PasswordFragment>(R.id.controlFragmentContainer)
         }
     }
 
@@ -50,5 +51,12 @@ class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentList
     }
 
     override fun <T> replace() {
+    }
+
+    override fun onChaBtnClicked() {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<LoginFragment>(R.id.controlFragmentContainer)
+        }
     }
 }

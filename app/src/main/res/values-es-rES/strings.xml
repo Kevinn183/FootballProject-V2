@@ -21,4 +21,9 @@
     <string name="empty">No pueden haber campos vacios</string>
     <string name="nopass">Las contraseñas no coinciden</string>
     <string name="nouser">Usuario no encontrado</string>
+    <string name="chpass">CAMBIAR CONTRASEÑA</string>
+    <string name="chpass">CAM</string>
+    <string name="chpass">CAM</string>
+    <string name="mail">Email</string>
+    <string name="change">CAMBIAR</string>
 </resources>
