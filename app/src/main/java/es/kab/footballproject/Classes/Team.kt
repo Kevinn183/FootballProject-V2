@@ -1,3 +1,3 @@
 package es.kab.footballproject.Classes
 
-data class Team(val name:String,val puesto:String,val puntos:String, val nameStadium: String, val numTrofeos: String, val shield:Int, val stadium:Int, val copa:Int)
+data class Team(val team:String,val pos:String,val points:Int,val shield:String, val wins:Int,val draws:Int, val losses : Int, val form:String, val gf:String, val ga:String )
