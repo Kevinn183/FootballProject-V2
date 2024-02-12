@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import es.kab.footballproject.Activities.MainActivity
 import es.kab.footballproject.Classes.Nation
 import es.kab.footballproject.R
 
@@ -41,5 +42,12 @@ class WorldAdapter(private val context: Context, private val nations:MutableList
     override fun onBindViewHolder(holder: TeamsViewHolder, position: Int) {
         val nation = nations[position]
         holder.bindItem(nation, context)
+
+        holder.itemView.setOnClickListener {
+            val videoUrl = nation.video
+            if (context is MainActivity){
+                context.showVideo(videoUrl)
+            }
+        }
     }
 }

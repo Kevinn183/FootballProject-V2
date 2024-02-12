@@ -10,6 +10,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.google.android.material.navigation.NavigationBarView
 import es.kab.footballproject.Fragments.MakeFragment
+import es.kab.footballproject.Fragments.MultimediaFragment
 import es.kab.footballproject.Fragments.WorldFragment
 import es.kab.footballproject.Fragments.OroFragment
 import es.kab.footballproject.Fragments.TeamFragment
@@ -78,6 +79,14 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             else -> false
         }
 
+    }
+
+    fun showVideo(videoUrl: String) {
+        val transaction = supportFragmentManager.beginTransaction()
+        val fragment = MultimediaFragment.newInstance(videoUrl)
+        transaction.add(android.R.id.content, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
      fun ToolBarName(name:String){
