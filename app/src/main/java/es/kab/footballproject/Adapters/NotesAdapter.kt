@@ -32,8 +32,8 @@ class NotesAdapter(private val context: Context,
 
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        private val tvTitle: TextView = view.findViewById(R.id.tvTitle)
-        private val tvContent: TextView = view.findViewById(R.id.tvContent)
+        private val tvTitle: TextView = view.findViewById(R.id.noteTitle)
+        private val tvContent: TextView = view.findViewById(R.id.noteContent)
 
         fun bindItem(item: Note){
             tvTitle.text = item.title

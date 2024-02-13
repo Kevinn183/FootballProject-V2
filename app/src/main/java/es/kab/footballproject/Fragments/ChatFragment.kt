@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import es.kab.footballproject.Adapters.NotesAdapter
 import es.kab.footballproject.Classes.Note
 import es.kab.footballproject.Firebase.AuthManager
@@ -33,16 +36,14 @@ class ChatFragment : Fragment() {
 
             var contingut = binding.enviarMsgText.text.toString()
             if (!contingut.isNullOrBlank()){
-                lifecycleScope.launch (Dispatchers.IO){
-                    firestoreManager.addNote(Note(content = contingut))
-                    withContext(Dispatchers.Main){
-                        binding.enviarMsgText.text.clear()
-                    }
-                }
+
+                var email = AuthManager().getCurrentUser()?.email.toString()
+                createNewNote(email,contingut)
+                binding.enviarMsgText.setText("")
             }
-
-
-
+            else{
+                Toast.makeText(requireContext(), "don't work", Toast.LENGTH_SHORT).show()
+            }
         }
         setRecyclerView()
 
@@ -52,7 +53,7 @@ class ChatFragment : Fragment() {
 
     private fun setRecyclerView(){
         notes = mutableListOf()
-        binding.recViewChat.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recViewChat.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         mAdapter = NotesAdapter(requireContext(), notes)
         binding.recViewChat.adapter = mAdapter
 
@@ -66,6 +67,20 @@ class ChatFragment : Fragment() {
                     }
                 }
 
+        }
+    }
+
+
+    private fun createNewNote(title: String, body: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val newNote = Note(title=title, content=body)
+                firestoreManager.addNote(newNote)
+
+
+            } catch (e: Exception) {
+                e.toString()
+            }
         }
     }
 

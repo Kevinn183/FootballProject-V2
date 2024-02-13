@@ -14,14 +14,10 @@ import kotlinx.coroutines.tasks.await
 class FirestoreManager {
 
     private val firestore by lazy { FirebaseFirestore.getInstance() }
-    private val auth = AuthManager()
-    private val userId = auth.getCurrentUser()?.email
-
     suspend fun addNote(note: Note): Boolean {
 
         return try {
-            note.date = Timestamp.now().toDate()
-            note.userId= userId.toString()
+            note.date = Timestamp.now()
             firestore.collection("mensajes").add(note).await()
             true
         }catch(e: Exception){
@@ -34,15 +30,16 @@ class FirestoreManager {
         try {
             notesCollection = FirebaseFirestore.getInstance()
                 .collection("mensajes")
-            val subscription = notesCollection.orderBy("data",Query.Direction.ASCENDING).addSnapshotListener { snapshot, _ ->
+            val subscription = notesCollection.orderBy("date",Query.Direction.ASCENDING).addSnapshotListener { snapshot, _ ->
                 if (snapshot != null) {
                     val notes = mutableListOf<Note>()
                     snapshot.forEach{
                         notes.add(
                             Note(
-                                id = it.id,
-                                title = it.get("name").toString(),
-                                content = it.get("text").toString(),
+                                id = it.get("id").toString(),
+                                title = it.get("title").toString(),
+                                content = it.get("content").toString(),
+                                date = Timestamp.now()
                             )
                         )
                     }
