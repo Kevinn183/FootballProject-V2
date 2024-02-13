@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.google.android.material.navigation.NavigationBarView
+import es.kab.footballproject.Fragments.ChatFragment
 import es.kab.footballproject.Fragments.MakeFragment
 import es.kab.footballproject.Fragments.MultimediaFragment
 import es.kab.footballproject.Fragments.WorldFragment
@@ -73,6 +74,13 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 supportFragmentManager.commit {
                     setReorderingAllowed(true)
                     replace<MakeFragment>(R.id.MainFragmentContainer)
+                }
+                true
+            }
+            R.id.item_chat ->{
+                supportFragmentManager.commit {
+                    setReorderingAllowed(true)
+                    replace<ChatFragment>(R.id.MainFragmentContainer)
                 }
                 true
             }

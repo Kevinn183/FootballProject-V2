@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.ChatFragment">
+
+    <EditText
+        android:id="@+id/enviarMsgText"
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:ems="10"
+        android:inputType="text"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/enviarMsgButton"
+        android:layout_width="61dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="310dp"
+        android:background="#00FFFFFF"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:icon="@drawable/send"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recViewChat"
+        android:layout_width="match_parent"
+        android:layout_height="676dp" />
+</FrameLayout>
