@@ -1,14 +1,20 @@
 package es.kab.footballproject.Activities
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.preference.PreferenceManager
 import com.google.android.material.navigation.NavigationBarView
+import es.kab.footballproject.Firebase.AuthManager
 import es.kab.footballproject.Fragments.ChatFragment
 import es.kab.footballproject.Fragments.MakeFragment
 import es.kab.footballproject.Fragments.MultimediaFragment
@@ -20,6 +26,9 @@ import es.kab.footballproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
     private lateinit var binding : ActivityMainBinding
+    companion object{
+        private val NOTIFICATIONS_REQUEST_CODE = 200
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +36,11 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setContentView(binding.root)
         binding.bottomNav.setOnItemSelectedListener(this)
         setSupportActionBar(binding.myToolbar)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                NOTIFICATIONS_REQUEST_CODE
+            )
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,8 +50,16 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.actionLogOut ->{
+                AuthManager().logOut()
+                val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+                sharedPreferences.edit().clear().apply()
                 Toast.makeText(this,getString(R.string.exit),Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ControlActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.actionSettings->{
+                val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
                 true
             }

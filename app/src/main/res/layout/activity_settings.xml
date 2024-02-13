@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Activities.SettingsActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/controlFragmentContainer"
+        android:name="es.kab.footballproject.Fragments.SettingsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

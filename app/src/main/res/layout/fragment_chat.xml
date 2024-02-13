@@ -7,13 +7,10 @@
     tools:context=".Fragments.ChatFragment">
 
 
-
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewChat"
         android:layout_width="match_parent"
-        android:layout_height="642dp" />
+        android:layout_height="608dp" />
 
     <EditText
         android:id="@+id/enviarMsgText"
@@ -23,6 +20,9 @@
         android:layout_marginStart="30dp"
         android:ems="10"
         android:inputType="text"
+        android:textColorHint="@color/green_700"
+
+        android:backgroundTint="@color/green_700"
         android:hint="Message" />
 
     <Button

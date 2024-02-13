@@ -1,34 +1,35 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <PreferenceCategory app:title="@string/chat">
 
         <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
+            app:key="name"
+            app:title="@string/username"
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+            app:defaultValue="#FFFFFF"
+            app:entries="@array/color_names"
+            app:entryValues="@array/color_values"
+            app:key="background_color"
+            app:title="@string/back_color"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header">
+    <PreferenceCategory app:title="@string/cache">
 
         <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+            app:key="offline"
+            app:title="@string/offline" />
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/general">
+
+        <CheckBoxPreference
+            app:key="vibrate"
+            app:title="@string/vibrate" />
 
     </PreferenceCategory>
 

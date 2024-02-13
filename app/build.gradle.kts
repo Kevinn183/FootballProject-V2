@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -55,9 +56,13 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
 
     implementation ("com.google.firebase:firebase-firestore-ktx")
+    implementation ("com.google.firebase:firebase-messaging-ktx")
     implementation ("com.google.firebase:firebase-auth-ktx")
 
     implementation("androidx.activity:activity-ktx:1.8.2")
+
+    implementation ("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 
     //END
 

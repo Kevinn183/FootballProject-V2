@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import es.kab.footballproject.Firebase.AuthManager
 import es.kab.footballproject.Fragments.InicialFragment
 import es.kab.footballproject.Fragments.LoginFragment
 import es.kab.footballproject.Fragments.PasswordFragment
@@ -15,6 +16,10 @@ class ControlActivity : AppCompatActivity(), InicialFragment.InicialFragmentList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_control)
+
+        if (AuthManager().getCurrentUser() != null){
+            onLgnButtonCLicked()
+        }
     }
 
     override fun OnStartButtonClicked() {

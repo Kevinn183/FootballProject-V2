@@ -21,8 +21,15 @@
     <string name="nouser">User not found</string>
     <string name="chpass">CHANGE PASSWORD</string>
     <string name="mail">Email</string>
+    <string name="chat" translatable="false">Chat</string>
+    <string name="back_color">Background color </string>
     <string name="change">CHANGE</string>
+    <string name="general" translatable="false">General</string>
+    <string name="cache" translatable="false">Cache</string>
+    <string name="offline" translatable="false">Offline</string>
+    <string name="vibrate">Vibrate</string>
     <string name="exit">Coming out</string>
+    <string name="settings">SETTINGS</string>
     <string name="last_win">Last win</string>
     <string name="messages">Messages</string>
     <!-- Preference Titles -->
